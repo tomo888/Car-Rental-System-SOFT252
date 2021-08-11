@@ -13,9 +13,9 @@ public abstract class GenericUser {
     private String firstName;
     private String surname;
     private String loginName;
-    private String password;
+    private char[] password;
 
-    public GenericUser(String firstName, String surname, String loginName, String password) {
+    public GenericUser(String firstName, String surname, String loginName, char[] password) {
         this.firstName = firstName;
         this.surname = surname;
         this.loginName = loginName;
@@ -46,11 +46,11 @@ public abstract class GenericUser {
         this.loginName = loginName;
     }
 
-    public String getPassword() {
+    public char[] getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(char[] password) {
         this.password = password;
     }
     
