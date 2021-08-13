@@ -14,9 +14,6 @@ public class Car {
     private String model;
     private boolean isAvailable;
 
-    public Car(String licenseNumber, String address, String carHired) {
-        this.licenseNumber = licenseNumber;
-        this.address = address;
-        this.carHired = carHired;
+    public Car() {
     }
 }

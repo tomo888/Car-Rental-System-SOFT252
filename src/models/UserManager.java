@@ -13,8 +13,14 @@ import java.util.*;
  * @author User
  */
 public class UserManager {
-    public List<Customer> customers = new ArrayList<Customer>(); 
+    public static ArrayList<Customer> customers = new ArrayList<Customer>(); 
     
-    
+    public ArrayList getCustomerList() {
+        return customers;
+    }
 
+    public static void setCustomerList(ArrayList customers) {
+        UserManager.customers = customers;
+    }
 }
+

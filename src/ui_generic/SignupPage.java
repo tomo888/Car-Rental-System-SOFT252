@@ -6,6 +6,7 @@
 package ui_generic;
 import users.Customer;
 import models.UserManager;
+import java.util.Arrays;
 /**
  *
  * @author User
@@ -129,13 +130,13 @@ public class SignupPage extends javax.swing.JFrame {
 
         NotificationText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         NotificationText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        NotificationText.setText("jLabel9");
+        NotificationText.setText("Please insert your details.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -150,24 +151,24 @@ public class SignupPage extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(AddressInput, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                            .addComponent(FirstNameInput, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                            .addComponent(SurnameInput, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                            .addComponent(UsernameInput, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                            .addComponent(LicenseNoInput, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                            .addComponent(AddressInput)
+                            .addComponent(FirstNameInput)
+                            .addComponent(SurnameInput)
+                            .addComponent(LicenseNoInput)
                             .addComponent(jPasswordField1)
-                            .addComponent(jPasswordField2)))
+                            .addComponent(jPasswordField2)
+                            .addComponent(UsernameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(NotificationText, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(NotificationText, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,16 +185,16 @@ public class SignupPage extends javax.swing.JFrame {
                     .addComponent(SurnameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(UsernameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AddressInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(LicenseNoInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(AddressInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3)
+                    .addComponent(UsernameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -219,13 +220,13 @@ public class SignupPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        FirstNameInput.getText();
-        SurnameInput.getText();
-        AddressInput.getText();
-        LicenseNoInput.getText();
-        UsernameInput.getText();
-        jPasswordField1.getPassword();
-        jPasswordField2.getPassword();
+        String input1 = FirstNameInput.getText();
+        String input2 = SurnameInput.getText();
+        String input3 = AddressInput.getText();
+        String input4 = LicenseNoInput.getText();
+        String input5 = UsernameInput.getText();
+        char[] input6 = jPasswordField1.getPassword();
+        char[] input7 = jPasswordField2.getPassword();
         
         boolean FirstNameCheck = false;
         boolean SurnameCheck = false;
@@ -233,10 +234,8 @@ public class SignupPage extends javax.swing.JFrame {
         boolean LicenseNoCheck = false;
         boolean UsernameCheck = false;
         boolean PasswordCheck = false;
-        boolean ConfirmPasswordCheck = false;
-
         
-        if(FirstNameInput.getText() == "") {
+        if(input1.equals("")) {
             FirstNameCheck = false;
             NotificationText.setText("Please input your first name.");
         }
@@ -245,7 +244,7 @@ public class SignupPage extends javax.swing.JFrame {
             FirstNameCheck = true;
         }
         
-        if (FirstNameCheck == true && SurnameInput.getText() == "") {
+        if (FirstNameCheck == true && input2.equals("")) {
             SurnameCheck = false;
             NotificationText.setText("Please input your surname.");
         }
@@ -254,16 +253,16 @@ public class SignupPage extends javax.swing.JFrame {
             SurnameCheck = true;
         }
         
-        if (SurnameCheck == true && AddressInput.getText() == "") {
+        if (SurnameCheck == true && input3.equals("")) {
             AddressCheck = false;
             NotificationText.setText("Please input your address.");
         }
         
         else if (SurnameCheck == true) {
-            SurnameCheck = true;
+            AddressCheck = true;
         }
         
-        if (AddressCheck == true && LicenseNoInput.getText() == "") {
+        if (AddressCheck == true && input4.equals("")) {
             LicenseNoCheck = false;
             NotificationText.setText("Please input your license number.");
         }
@@ -272,7 +271,7 @@ public class SignupPage extends javax.swing.JFrame {
             LicenseNoCheck = true;
         }
         
-        if (LicenseNoCheck == true && UsernameInput.getText() == "") {
+        if (LicenseNoCheck == true && input5.equals("")) {
             UsernameCheck = false;
             NotificationText.setText("Please choose a username.");
         }
@@ -281,7 +280,17 @@ public class SignupPage extends javax.swing.JFrame {
             UsernameCheck = true;
         }
         
-        if (UsernameCheck == true && jPasswordField1.getPassword() == null) {
+        for(Customer u : UserManager.customers) {
+            
+            if(input5.equals(u.getLoginName()))
+            {
+                UsernameCheck = false;
+                NotificationText.setText("This username has already been taken.");
+            }
+            
+        }
+        
+        if (UsernameCheck == true && input6.length == 0) {
             PasswordCheck = false;
             NotificationText.setText("Please input a password.");
         }
@@ -290,22 +299,20 @@ public class SignupPage extends javax.swing.JFrame {
             PasswordCheck = true;
         }
         
-        if (PasswordCheck == true && jPasswordField2.getPassword() == null) {
-            ConfirmPasswordCheck = false;
+        if (PasswordCheck == true && input7.length == 0) {
             NotificationText.setText("Please type your chosen password in the 'Confirm Password' box.");
         }
         
-        else if (PasswordCheck == true && jPasswordField1.getPassword() != jPasswordField2.getPassword()) {
-            ConfirmPasswordCheck = false;
+        else if (PasswordCheck == true && (!Arrays.equals(input6, input7))) {
             NotificationText.setText("Your passwords do not match.");
         }
         
         else if (PasswordCheck == true) {
-            ConfirmPasswordCheck = true;
             Customer c = new Customer(FirstNameInput.getText(), SurnameInput.getText(), UsernameInput.getText(), jPasswordField1.getPassword(), LicenseNoInput.getText(), AddressInput.getText(), null);
-            NotificationText.setText("You have successfully created an account!.");
+            NotificationText.setText("You have successfully created an account!");
 
-             customers.add(c);
+            UserManager.customers.add(c);
+                          
         }
     }//GEN-LAST:event_jButton1MouseClicked
 

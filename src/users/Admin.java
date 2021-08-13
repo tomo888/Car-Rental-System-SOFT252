@@ -10,5 +10,10 @@ package users;
  * @author User
  */
 public class Admin extends GenericUser {
+
+    public Admin(String firstName, String surname, String loginName, char[] password) {
+        super (firstName, surname, loginName, password);
+    }
+
     
 }
