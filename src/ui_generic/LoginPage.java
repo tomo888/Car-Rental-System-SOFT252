@@ -5,7 +5,11 @@
  */
 package ui_generic;
 
-import org.json.simple.JSONObject;
+import java.util.Arrays;
+import models.UserManager;
+import users.Customer;
+import ui_customer.CustomerMenu;
+import ui_admin.AdminMenu;
 
 /**
  *
@@ -31,7 +35,7 @@ public class LoginPage extends javax.swing.JFrame {
 
         jProgressBar1 = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        NotificationText = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jUsername = new javax.swing.JTextField();
@@ -45,8 +49,11 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel1.setText("Mutley Motor Hire");
         jLabel1.setToolTipText("");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Welcome! Please login or create an account.");
+        NotificationText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        NotificationText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NotificationText.setText("Welcome! Please login or create an account.");
+        NotificationText.setFocusable(false);
+        NotificationText.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Username:");
@@ -84,7 +91,7 @@ public class LoginPage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(91, 91, 91)
-                .addComponent(jLabel2)
+                .addComponent(NotificationText)
                 .addContainerGap(83, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -108,7 +115,7 @@ public class LoginPage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(NotificationText)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -136,8 +143,27 @@ public class LoginPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAccountCreationMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        jUsername.getText();
-        jPassword.getPassword();
+        String usernameInput = jUsername.getText();
+        char[] passwordInput = jPassword.getPassword();
+        boolean validDetails = false;
+        
+        
+        for(Customer u : UserManager.customers) {
+            if (u.getLoginName().equals(usernameInput)) {
+                if (Arrays.equals(u.getPassword(), passwordInput)) {
+                    validDetails = true;
+                    CustomerMenu cMenu = new CustomerMenu();
+                    cMenu.setVisible(true);
+                    cMenu.pack();
+                    cMenu.setLocationRelativeTo(null);
+                    this.dispose();
+                }
+            }
+        }
+        
+        if (validDetails == false) {
+            NotificationText.setText("Your details are invalid.");
+        }
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
@@ -176,10 +202,10 @@ public class LoginPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel NotificationText;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAccountCreation;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPasswordField jPassword;

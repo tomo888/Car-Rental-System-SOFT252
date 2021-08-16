@@ -10,22 +10,22 @@ package users;
  * @author User
  */
 public class Customer extends GenericUser {
-    private String licenseNumber;
+    private int licenseNumber;
     private String address;
     private String carHired;
 
-    public Customer(String firstName, String surname, String loginName, char[] password, String licenseNumber, String address, String carHired) {
+    public Customer(String firstName, String surname, String loginName, char[] password, int licenseNumber, String address, String carHired) {
         super (firstName, surname, loginName, password);
         this.licenseNumber = licenseNumber;
         this.address = address;
         this.carHired = carHired;
     }
     
-    public String getLicenseNumber() {
+    public int getLicenseNumber() {
         return licenseNumber;
     }
 
-    public void setLicenseNumber(String licenseNumber) {
+    public void setLicenseNumber(int licenseNumber) {
         this.licenseNumber = licenseNumber;
     }
 

@@ -15,12 +15,11 @@ import java.util.*;
 public class UserManager {
     public static ArrayList<Customer> customers = new ArrayList<Customer>(); 
     
-    public ArrayList getCustomerList() {
-        return customers;
-    }
+    public static ArrayList<Admin> admins = new ArrayList<Admin>(); 
+    
+    
+    
+    
 
-    public static void setCustomerList(ArrayList customers) {
-        UserManager.customers = customers;
-    }
 }
 

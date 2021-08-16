@@ -80,7 +80,7 @@ public class SignupPage extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel6.setText("Registration");
 
-        jButton2.setText("Cancel");
+        jButton2.setText("Back ->");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
@@ -95,6 +95,11 @@ public class SignupPage extends javax.swing.JFrame {
         LicenseNoInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LicenseNoInputActionPerformed(evt);
+            }
+        });
+        LicenseNoInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                LicenseNoInputKeyTyped(evt);
             }
         });
 
@@ -276,6 +281,11 @@ public class SignupPage extends javax.swing.JFrame {
             NotificationText.setText("Please choose a username.");
         }
         
+        else if (LicenseNoCheck == true && input5.charAt(0) == '@') {
+            UsernameCheck = false;
+            NotificationText.setText("Please do not use '@' as the first character of your username.");
+        }
+        
         else if (LicenseNoCheck == true) {
             UsernameCheck = true;
         }
@@ -308,7 +318,7 @@ public class SignupPage extends javax.swing.JFrame {
         }
         
         else if (PasswordCheck == true) {
-            Customer c = new Customer(FirstNameInput.getText(), SurnameInput.getText(), UsernameInput.getText(), jPasswordField1.getPassword(), LicenseNoInput.getText(), AddressInput.getText(), null);
+            Customer c = new Customer(FirstNameInput.getText(), SurnameInput.getText(), UsernameInput.getText(), jPasswordField1.getPassword(), Integer.parseInt(LicenseNoInput.getText()), AddressInput.getText(), null);
             NotificationText.setText("You have successfully created an account!");
 
             UserManager.customers.add(c);
@@ -317,7 +327,11 @@ public class SignupPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:
+        LoginPage loginP = new LoginPage();
+        loginP.setVisible(true);
+        loginP.pack();
+        loginP.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -343,6 +357,14 @@ public class SignupPage extends javax.swing.JFrame {
     private void FirstNameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FirstNameInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FirstNameInputActionPerformed
+
+    private void LicenseNoInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LicenseNoInputKeyTyped
+        // only allows numbers to be inputted into license number field
+        char c = evt.getKeyChar();
+        if(!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_LicenseNoInputKeyTyped
 
     /**
      * @param args the command line arguments
