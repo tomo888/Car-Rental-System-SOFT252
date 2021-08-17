@@ -10,6 +10,7 @@ import models.UserManager;
 import users.Customer;
 import ui_customer.CustomerMenu;
 import ui_admin.AdminMenu;
+import users.Admin;
 
 /**
  *
@@ -22,6 +23,18 @@ public class LoginPage extends javax.swing.JFrame {
      */
     public LoginPage() {
         initComponents();
+        char[] defaultPassword = new char[8];
+        defaultPassword[0] = 'p';
+        defaultPassword[1] = 'a';
+        defaultPassword[2] = 's';
+        defaultPassword[3] = 's';
+        defaultPassword[4] = 'w';
+        defaultPassword[5] = 'o';
+        defaultPassword[6] = 'r';
+        defaultPassword[7] = 'd';
+
+        Admin masterAccount = new Admin("Master", "Admin", "@DefaultAdmin", defaultPassword);
+        UserManager.admins.add(masterAccount);
     }
 
     /**
@@ -146,6 +159,21 @@ public class LoginPage extends javax.swing.JFrame {
         String usernameInput = jUsername.getText();
         char[] passwordInput = jPassword.getPassword();
         boolean validDetails = false;
+        
+        if (usernameInput.charAt(0) == '@') {
+            for(Admin u : UserManager.admins) {
+                if (u.getLoginName().equals(usernameInput)) {
+                    if (Arrays.equals(u.getPassword(), passwordInput)) {
+                        validDetails = true;
+                        AdminMenu aMenu = new AdminMenu();
+                        aMenu.setVisible(true);
+                        aMenu.pack();
+                        aMenu.setLocationRelativeTo(null);
+                        this.dispose();
+                    }
+                }
+            }
+        }
         
         
         for(Customer u : UserManager.customers) {
