@@ -29,19 +29,24 @@ public class CustomerMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        ShopButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         WelcomeText = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        ProfileButton = new javax.swing.JButton();
+        LogoutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton1.setText("View available vehicles");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ShopButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        ShopButton.setText("View available vehicles");
+        ShopButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ShopButtonMouseClicked(evt);
+            }
+        });
+        ShopButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ShopButtonActionPerformed(evt);
             }
         });
 
@@ -53,24 +58,29 @@ public class CustomerMenu extends javax.swing.JFrame {
         WelcomeText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         WelcomeText.setText("Welcome, ");
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton2.setText("Your profile");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        ProfileButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        ProfileButton.setText("Your profile");
+        ProfileButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ProfileButtonMouseClicked(evt);
+            }
+        });
+        ProfileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                ProfileButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton3.setText("Log out");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        LogoutButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        LogoutButton.setText("Log out");
+        LogoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                LogoutButtonMouseClicked(evt);
             }
         });
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        LogoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                LogoutButtonActionPerformed(evt);
             }
         });
 
@@ -91,9 +101,9 @@ public class CustomerMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(LogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ProfileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ShopButton))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -104,37 +114,53 @@ public class CustomerMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(WelcomeText, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(ShopButton)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(ProfileButton)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(LogoutButton)
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ShopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShopButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ShopButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void ProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfileButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_ProfileButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void LogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_LogoutButtonActionPerformed
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+    private void LogoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutButtonMouseClicked
         LoginPage.customerLoggedIn = null;
         LoginPage loginP = new LoginPage();
         loginP.setVisible(true);
         loginP.pack();
         loginP.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_jButton3MouseClicked
+    }//GEN-LAST:event_LogoutButtonMouseClicked
+
+    private void ShopButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShopButtonMouseClicked
+        CustomerShopMenu cShop = new CustomerShopMenu();
+        cShop.setVisible(true);
+        cShop.pack();
+        cShop.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_ShopButtonMouseClicked
+
+    private void ProfileButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProfileButtonMouseClicked
+        CustomerProfile cProfile = new CustomerProfile();
+        cProfile.setVisible(true);
+        cProfile.pack();
+        cProfile.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_ProfileButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -172,10 +198,10 @@ public class CustomerMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton LogoutButton;
+    private javax.swing.JButton ProfileButton;
+    private javax.swing.JButton ShopButton;
     private javax.swing.JLabel WelcomeText;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 

@@ -30,7 +30,7 @@ public class UserManager implements Serializable {
     }
     
     public void setCustomerList(ArrayList<Customer> customers) {
-        this.customers = customers;
+        UserManager.customers = customers;
     }
     
     public ArrayList<Admin> getAdminList() {
@@ -38,7 +38,7 @@ public class UserManager implements Serializable {
     }
     
     public void setAdminList(ArrayList<Admin> admins) {
-        this.admins = admins;
+        UserManager.admins = admins;
     }
     
     private ArrayList<Customer> serializeCustomers = customers;

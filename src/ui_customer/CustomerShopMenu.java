@@ -5,17 +5,53 @@
  */
 package ui_customer;
 
+import java.util.ArrayList;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+import models.VehicleManager;
+import products.Car;
+
 /**
  *
  * @author User
  */
 public class CustomerShopMenu extends javax.swing.JFrame {
+    
+    VehicleManager vm = new VehicleManager();
+    public static int rowSelected;
 
     /**
      * Creates new form CustomerShopMenu
      */
     public CustomerShopMenu() {
         initComponents();
+        ArrayList<Car> newCarList = vm.getCarList();
+        Car test1 = new Car(true, 200, "10/10/10", "honda", "civic", "1029283");
+        Car test2 = new Car(true, 400, "20/12/11", "honda", "massau", "69696969");
+        newCarList.add(test1);
+        newCarList.add(test2);
+        addRowToJTable();
+        ListSelectionModel sModel = VehicleDisplay.getSelectionModel();
+        sModel.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (! sModel.isSelectionEmpty()) {
+                    rowSelected = sModel.getMinSelectionIndex();
+                    loadDetails();
+                }
+            }
+        });
+
+    }
+    
+    public void loadDetails() {
+    CustomerVehicleDetails customerCD = new CustomerVehicleDetails();
+    customerCD.setVisible(true);
+    customerCD.pack();
+    customerCD.setLocationRelativeTo(null);   
+    this.dispose();
     }
 
     /**
@@ -28,24 +64,69 @@ public class CustomerShopMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
+        VehicleDisplay = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jScrollPane1.setToolTipText("");
+        jScrollPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jScrollPane1MouseClicked(evt);
+            }
+        });
+
+        VehicleDisplay.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Make", "Model", "Registration", "Price Per Day", "View Details"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        VehicleDisplay.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(VehicleDisplay);
+        if (VehicleDisplay.getColumnModel().getColumnCount() > 0) {
+            VehicleDisplay.getColumnModel().getColumn(0).setResizable(false);
+            VehicleDisplay.getColumnModel().getColumn(1).setResizable(false);
+            VehicleDisplay.getColumnModel().getColumn(2).setResizable(false);
+            VehicleDisplay.getColumnModel().getColumn(3).setResizable(false);
+            VehicleDisplay.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jScrollPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jScrollPane1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -81,8 +162,20 @@ public class CustomerShopMenu extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    public void addRowToJTable() {
+        DefaultTableModel model = (DefaultTableModel) VehicleDisplay.getModel();
+        Object rowData[] = new Object[5];
+        for (Car v : vm.getCarList()) {
+            rowData[0] = v.getMake();
+            rowData[1] = v.getModel();
+            rowData[2] = v.getRegDetails();
+            rowData[3] = "£" + Integer.toString(v.getPrice());
+            model.addRow(rowData);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable VehicleDisplay;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
