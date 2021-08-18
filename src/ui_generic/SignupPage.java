@@ -4,14 +4,22 @@
  * and open the template in the editor.
  */
 package ui_generic;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import users.Customer;
 import models.UserManager;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author User
  */
 public class SignupPage extends javax.swing.JFrame {
+    UserManager um = new UserManager();
 
     /**
      * Creates new form SignupPage
@@ -290,7 +298,7 @@ public class SignupPage extends javax.swing.JFrame {
             UsernameCheck = true;
         }
         
-        for(Customer u : UserManager.customers) {
+        for(Customer u : um.getCustomerList()) {
             
             if(input5.equals(u.getLoginName()))
             {
@@ -320,10 +328,13 @@ public class SignupPage extends javax.swing.JFrame {
         else if (PasswordCheck == true) {
             Customer c = new Customer(FirstNameInput.getText(), SurnameInput.getText(), UsernameInput.getText(), jPasswordField1.getPassword(), Integer.parseInt(LicenseNoInput.getText()), AddressInput.getText(), null);
             NotificationText.setText("You have successfully created an account!");
+            ArrayList<Customer> newCustomerList = um.getCustomerList();
+            newCustomerList.add(c);
+            um.setCustomerList(newCustomerList);
+            System.out.println(um.getCustomerList());   
 
-            UserManager.customers.add(c);
-                          
         }
+        
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked

@@ -5,11 +5,13 @@
  */
 package users;
 
+import java.io.Serializable;
+
 /**
  *
  * @author User
  */
-public class Customer extends GenericUser {
+public class Customer extends GenericUser implements Serializable {
     private int licenseNumber;
     private String address;
     private String carHired;

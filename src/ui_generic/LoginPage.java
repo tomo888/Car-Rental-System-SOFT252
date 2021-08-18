@@ -5,24 +5,36 @@
  */
 package ui_generic;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.UserManager;
 import users.Customer;
 import ui_customer.CustomerMenu;
 import ui_admin.AdminMenu;
 import users.Admin;
-
+import ui_generic.SignupPage;
+import models.UserManager;
 /**
  *
  * @author User
  */
 public class LoginPage extends javax.swing.JFrame {
-
+    UserManager um = new UserManager();
+    ArrayList<Customer> customerList = um.getCustomerList();
+    public static Customer customerLoggedIn;
     /**
      * Creates new form LoginPage
      */
     public LoginPage() {
         initComponents();
+        System.out.println(um.getCustomerList());
         char[] defaultPassword = new char[8];
         defaultPassword[0] = 'p';
         defaultPassword[1] = 'a';
@@ -33,8 +45,11 @@ public class LoginPage extends javax.swing.JFrame {
         defaultPassword[6] = 'r';
         defaultPassword[7] = 'd';
 
+        ArrayList<Admin> newAdminList = new ArrayList<Admin>();
         Admin masterAccount = new Admin("Master", "Admin", "@DefaultAdmin", defaultPassword);
-        UserManager.admins.add(masterAccount);
+        newAdminList.add(masterAccount);
+        um.setAdminList(newAdminList);
+        System.out.println(um.getAdminList());
     }
 
     /**
@@ -161,7 +176,7 @@ public class LoginPage extends javax.swing.JFrame {
         boolean validDetails = false;
         
         if (usernameInput.charAt(0) == '@') {
-            for(Admin u : UserManager.admins) {
+            for(Admin u : um.getAdminList()) {
                 if (u.getLoginName().equals(usernameInput)) {
                     if (Arrays.equals(u.getPassword(), passwordInput)) {
                         validDetails = true;
@@ -176,10 +191,11 @@ public class LoginPage extends javax.swing.JFrame {
         }
         
         
-        for(Customer u : UserManager.customers) {
+        for(Customer u : customerList) {
             if (u.getLoginName().equals(usernameInput)) {
                 if (Arrays.equals(u.getPassword(), passwordInput)) {
                     validDetails = true;
+                    customerLoggedIn = u;
                     CustomerMenu cMenu = new CustomerMenu();
                     cMenu.setVisible(true);
                     cMenu.pack();

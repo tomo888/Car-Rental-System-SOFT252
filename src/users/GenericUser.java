@@ -5,11 +5,13 @@
  */
 package users;
 
+import java.io.Serializable;
+
 /**
  *
  * @author User
  */
-public abstract class GenericUser {
+public abstract class GenericUser implements Serializable {
     private String firstName;
     private String surname;
     private String loginName;

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package models;
+import java.io.Serializable;
 import products.Car;
 import java.util.*;
 
@@ -11,7 +12,7 @@ import java.util.*;
  *
  * @author User
  */
-public class VehicleManager {
+public class VehicleManager implements Serializable {
     
     public static ArrayList<Car> cars = new ArrayList<Car>(); 
 

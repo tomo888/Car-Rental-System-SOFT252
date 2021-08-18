@@ -9,11 +9,41 @@ package products;
  *
  * @author User
  */
-public class Car {
+public class Car extends Vehicle {
     private String make;
     private String model;
-    private boolean isAvailable;
-
-    public Car() {
+    private String regDetails;
+    
+    public Car (boolean isAvailable, int price, String dateReturning, String make, String model, String regDetails) {
+        super(isAvailable, price, dateReturning);
+        this.make = make;
+        this.model = model;
+        this.regDetails = regDetails;
     }
+    
+    public String getMake() {
+        return make;
+    }
+    
+    public void setMake() {
+        this.make = make;
+    }
+    
+    public String getModel() {
+        return model;
+    }
+    
+    public void setModel() {
+        this.model = model;
+    }
+    
+    public String getRegDetails() {
+        return regDetails;
+    }
+    
+    public void setRegDetails() {
+        this.regDetails = regDetails;
+    }
+    
+    
 }

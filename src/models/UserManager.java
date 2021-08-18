@@ -4,22 +4,49 @@
  * and open the template in the editor.
  */
 package models;
-import users.GenericUser;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 import users.Customer;
 import users.Admin;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import ui_generic.LoginPage;
 /**
  *
  * @author User
  */
-public class UserManager {
-    public static ArrayList<Customer> customers = new ArrayList<Customer>(); 
+public class UserManager implements Serializable {
     
-    public static ArrayList<Admin> admins = new ArrayList<Admin>(); 
+    private static ArrayList<Customer> customers = new ArrayList<Customer>(); 
+    
+    private static ArrayList<Admin> admins = new ArrayList<Admin>(); 
+    
+    public ArrayList<Customer> getCustomerList() {
+        return customers;
+    }
+    
+    public void setCustomerList(ArrayList<Customer> customers) {
+        this.customers = customers;
+    }
+    
+    public ArrayList<Admin> getAdminList() {
+        return admins;
+    }
+    
+    public void setAdminList(ArrayList<Admin> admins) {
+        this.admins = admins;
+    }
+    
+    private ArrayList<Customer> serializeCustomers = customers;
     
     
+    boolean done = false;
+        
+        
     
-    
-
 }
 
