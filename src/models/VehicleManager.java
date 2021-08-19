@@ -33,6 +33,10 @@ public class VehicleManager implements Serializable {
     public void setCarList(ArrayList<Car> cars) {
         VehicleManager.cars = cars;
     }
+    
+    public void addTestCar() {
+        
+    }
 
     
 }

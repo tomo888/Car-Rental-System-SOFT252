@@ -21,13 +21,13 @@ import ui_admin.AdminMenu;
 import users.Admin;
 import ui_generic.SignupPage;
 import models.UserManager;
+import models.VehicleManager;
+import products.Car;
 /**
  *
  * @author User
  */
 public class LoginPage extends javax.swing.JFrame {
-    ArrayList<Customer> customerList = UserManager.getInstance().getCustomerList();
-    ArrayList<Admin> newAdminList = UserManager.getInstance().getAdminList();
     public static Customer customerLoggedIn;
     public static Admin adminLoggedIn;
     /**
@@ -45,12 +45,20 @@ public class LoginPage extends javax.swing.JFrame {
         defaultPassword[5] = 'o';
         defaultPassword[6] = 'r';
         defaultPassword[7] = 'd';
-
-        Admin masterAccount = new Admin("Master", "Admin", "@DefaultAdmin", defaultPassword);
-        newAdminList.add(masterAccount);
-        Customer testAccount = new Customer("Master", "Admin", "q", defaultPassword, 1, "q", "q");
-        customerList.add(testAccount);
-        System.out.println(UserManager.getInstance().getAdminList());
+        if (UserManager.getInstance().getAdminList().isEmpty()) {
+            Admin masterAccount = new Admin("Master", "Admin", "@DefaultAdmin", defaultPassword);
+            UserManager.getInstance().getAdminList().add(masterAccount);
+        }
+        
+        if (UserManager.getInstance().getCustomerList().isEmpty()) {
+            Customer testAccount = new Customer("Master", "Admin", "q", defaultPassword, 1, "q", null);
+            UserManager.getInstance().getCustomerList().add(testAccount);
+        }
+        
+        if (VehicleManager.getInstance().getCarList().isEmpty()) {
+            Car testCar = new Car(false, 9999, "31/12/99", null, "test", "car", "8888");
+            VehicleManager.getInstance().getCarList().add(testCar);
+        }
     }
 
     /**

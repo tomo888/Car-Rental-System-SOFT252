@@ -44,7 +44,7 @@
                                   <Component id="Username" min="-2" max="-2" attributes="0"/>
                                   <Component id="LicenseNo" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="Address" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="CarHired" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="VehicleHired" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -76,7 +76,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="Address" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="CarHired" min="-2" max="-2" attributes="0"/>
+              <Component id="VehicleHired" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="23" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -144,12 +144,12 @@
         <Property name="text" type="java.lang.String" value="Address:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="CarHired">
+    <Component class="javax.swing.JLabel" name="VehicleHired">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Car hired:"/>
+        <Property name="text" type="java.lang.String" value="Vehicle hired:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">

@@ -28,7 +28,7 @@ public class Vehicle {
         return isAvailable;
     }
     
-    public void setIsAvailable() {
+    public void setIsAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
     
@@ -36,7 +36,7 @@ public class Vehicle {
         return price;
     }
     
-    public void setPrice() {
+    public void setPrice(int price) {
         this.price = price;
     }
     
@@ -44,7 +44,7 @@ public class Vehicle {
         return dateReturning;
     }
     
-    public void setDateReturning() {
+    public void setDateReturning(String dateReturning) {
         this.dateReturning = dateReturning;
     }
     
@@ -52,7 +52,7 @@ public class Vehicle {
         return customerUsing;
     }
     
-    public void setCustomerUsing() {
+    public void setCustomerUsing(Customer customerUsing) {
         this.customerUsing = customerUsing;
     }
 }

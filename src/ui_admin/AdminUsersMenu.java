@@ -11,44 +11,25 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import models.UserManager;
 import models.VehicleManager;
 import products.Car;
+import users.Customer;
 
 /**
  *
  * @author User
  */
-public class AdminVehicleMenu extends javax.swing.JFrame {
+public class AdminUsersMenu extends javax.swing.JFrame {
     public static int rowSelected;
 
     /**
      * Creates new form CustomerShopMenu
      */
-    public AdminVehicleMenu() {
+    public AdminUsersMenu() {
         initComponents();
         addRowToJTable();
-        ListSelectionModel sModel = VehicleDisplay.getSelectionModel();
-        sModel.addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                if (! sModel.isSelectionEmpty()) {
-                    rowSelected = sModel.getMinSelectionIndex();
-                    loadDetails();
-                }
-            }
-        });
 
-    }
-    
-    //have to call method below instead of invoking above as otherwise the this.dispose(); command cannot be found
-    //and used
-    
-    public void loadDetails() {
-    AdminVehicleDetails adminVD = new AdminVehicleDetails();
-    adminVD.setVisible(true);
-    adminVD.pack();
-    adminVD.setLocationRelativeTo(null);   
-    this.dispose();
     }
 
     /**
@@ -61,7 +42,7 @@ public class AdminVehicleMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        VehicleDisplay = new javax.swing.JTable();
+        UsersDisplay = new javax.swing.JTable();
         BackButton = new javax.swing.JButton();
         AddButton = new javax.swing.JButton();
 
@@ -74,16 +55,16 @@ public class AdminVehicleMenu extends javax.swing.JFrame {
             }
         });
 
-        VehicleDisplay.setModel(new javax.swing.table.DefaultTableModel(
+        UsersDisplay.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Make", "Model", "Registration", "Price Per Day", "Available", "Date Returning"
+                "First name", "Surname", "Username", "License number", "Address", "Car hired"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
@@ -97,15 +78,15 @@ public class AdminVehicleMenu extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        VehicleDisplay.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(VehicleDisplay);
-        if (VehicleDisplay.getColumnModel().getColumnCount() > 0) {
-            VehicleDisplay.getColumnModel().getColumn(0).setResizable(false);
-            VehicleDisplay.getColumnModel().getColumn(1).setResizable(false);
-            VehicleDisplay.getColumnModel().getColumn(2).setResizable(false);
-            VehicleDisplay.getColumnModel().getColumn(3).setResizable(false);
-            VehicleDisplay.getColumnModel().getColumn(4).setResizable(false);
-            VehicleDisplay.getColumnModel().getColumn(5).setResizable(false);
+        UsersDisplay.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(UsersDisplay);
+        if (UsersDisplay.getColumnModel().getColumnCount() > 0) {
+            UsersDisplay.getColumnModel().getColumn(0).setResizable(false);
+            UsersDisplay.getColumnModel().getColumn(1).setResizable(false);
+            UsersDisplay.getColumnModel().getColumn(2).setResizable(false);
+            UsersDisplay.getColumnModel().getColumn(3).setResizable(false);
+            UsersDisplay.getColumnModel().getColumn(4).setResizable(false);
+            UsersDisplay.getColumnModel().getColumn(5).setResizable(false);
         }
 
         BackButton.setText("<- Back");
@@ -119,6 +100,11 @@ public class AdminVehicleMenu extends javax.swing.JFrame {
         AddButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AddButtonMouseClicked(evt);
+            }
+        });
+        AddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddButtonActionPerformed(evt);
             }
         });
 
@@ -161,12 +147,16 @@ public class AdminVehicleMenu extends javax.swing.JFrame {
         this.dispose();    }//GEN-LAST:event_BackButtonMouseClicked
 
     private void AddButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddButtonMouseClicked
-        AdminAddVehicle aAdd = new AdminAddVehicle();
+        AdminAddUser aAdd = new AdminAddUser();
         aAdd.setVisible(true);
         aAdd.pack();
         aAdd.setLocationRelativeTo(null);
         this.dispose();
        }//GEN-LAST:event_AddButtonMouseClicked
+
+    private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,44 +175,46 @@ public class AdminVehicleMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminVehicleMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminUsersMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminVehicleMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminUsersMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminVehicleMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminUsersMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminVehicleMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminUsersMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminVehicleMenu().setVisible(true);
+                new AdminUsersMenu().setVisible(true);
             }
         });
     }
     
     public void addRowToJTable() {
-        DefaultTableModel model = (DefaultTableModel) VehicleDisplay.getModel();
+        DefaultTableModel model = (DefaultTableModel) UsersDisplay.getModel();
         Object rowData[] = new Object[6];
         model.setRowCount(0); //reset table to avoid duplicate entries
         
-        for (Car v : VehicleManager.getInstance().getCarList()) {
-            rowData[0] = v.getMake();
-            rowData[1] = v.getModel();
-            rowData[2] = v.getRegDetails();
-            rowData[3] = "£" + Integer.toString(v.getPrice());
-            rowData[4] = v.getIsAvailable();
-            rowData[5] = v.getDateReturning();
+        for (Customer c : UserManager.getInstance().getCustomerList()) {
+            rowData[0] = c.getFirstName();
+            rowData[1] = c.getSurname();
+            rowData[2] = c.getLoginName();
+            rowData[3] = c.getLicenseNumber();
+            rowData[4] = c.getAddress();
+            rowData[5] = c.getVehicleHired();
             model.addRow(rowData);
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddButton;
     private javax.swing.JButton BackButton;
-    private javax.swing.JTable VehicleDisplay;
+    private javax.swing.JTable UsersDisplay;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

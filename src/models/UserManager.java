@@ -34,6 +34,8 @@ public class UserManager implements Serializable {
     
     private ArrayList<Admin> admins = new ArrayList<Admin>(); 
     
+    
+    
     public ArrayList<Customer> getCustomerList() {
         return customers;
     }

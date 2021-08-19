@@ -165,10 +165,10 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_LogoutButtonMouseClicked
 
     private void VehiclesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VehiclesButtonMouseClicked
-        CustomerShopMenu cShop = new CustomerShopMenu();
-        cShop.setVisible(true);
-        cShop.pack();
-        cShop.setLocationRelativeTo(null);
+        AdminVehicleMenu aVehicleMenu = new AdminVehicleMenu();
+        aVehicleMenu.setVisible(true);
+        aVehicleMenu.pack();
+        aVehicleMenu.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_VehiclesButtonMouseClicked
 
@@ -181,7 +181,11 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_ProfileButtonMouseClicked
 
     private void UsersButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsersButtonMouseClicked
-        // TODO add your handling code here:
+        AdminUsersMenu aUserMenu = new AdminUsersMenu();
+        aUserMenu.setVisible(true);
+        aUserMenu.pack();
+        aUserMenu.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_UsersButtonMouseClicked
 
     private void UsersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsersButtonActionPerformed

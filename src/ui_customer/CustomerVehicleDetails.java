@@ -13,8 +13,9 @@ import products.Car;
  * @author User
  */
 public class CustomerVehicleDetails extends javax.swing.JFrame {
-    Car carSelected = VehicleManager.getInstance().getCarList().get(CustomerShopMenu.rowSelected);
+    public static Car carSelected = VehicleManager.getInstance().getCarList().get(CustomerShopMenu.rowSelected);
     public static int totalPrice;
+    public static int daysSelected;
 
     /**
      * Creates new form CustomerVehicleDetails
@@ -208,7 +209,7 @@ public class CustomerVehicleDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_DaysButtonActionPerformed
 
     private void DaysButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DaysButtonMouseClicked
-        int daysSelected = DaysDropdownBox.getSelectedIndex();
+        daysSelected = DaysDropdownBox.getSelectedIndex();
         totalPrice = carSelected.getPrice() * (daysSelected + 1);
         TotalPriceText.setText("Total price: £" + totalPrice);
     }//GEN-LAST:event_DaysButtonMouseClicked

@@ -22,6 +22,7 @@ public class CustomerProfile extends javax.swing.JFrame {
         FullName.setText("Name: " + LoginPage.customerLoggedIn.getFirstName() + " " + LoginPage.customerLoggedIn.getSurname());
         LicenseNo.setText("License number: " + LoginPage.customerLoggedIn.getLicenseNumber());
         Address.setText("Address: " + LoginPage.customerLoggedIn.getAddress());
+        VehicleHired.setText("Vehicle hired: " + LoginPage.customerLoggedIn.getVehicleHired());
     }
 
     /**
@@ -39,7 +40,7 @@ public class CustomerProfile extends javax.swing.JFrame {
         FullName = new javax.swing.JLabel();
         LicenseNo = new javax.swing.JLabel();
         Address = new javax.swing.JLabel();
-        CarHired = new javax.swing.JLabel();
+        VehicleHired = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -64,8 +65,8 @@ public class CustomerProfile extends javax.swing.JFrame {
         Address.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Address.setText("Address:");
 
-        CarHired.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        CarHired.setText("Car hired:");
+        VehicleHired.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        VehicleHired.setText("Vehicle hired:");
 
         jButton1.setText("<- Back");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -104,7 +105,7 @@ public class CustomerProfile extends javax.swing.JFrame {
                                     .addComponent(Username)
                                     .addComponent(LicenseNo)
                                     .addComponent(Address)
-                                    .addComponent(CarHired))))
+                                    .addComponent(VehicleHired))))
                         .addGap(0, 80, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +128,7 @@ public class CustomerProfile extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Address)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(CarHired)
+                .addComponent(VehicleHired)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -195,10 +196,10 @@ public class CustomerProfile extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Address;
-    private javax.swing.JLabel CarHired;
     private javax.swing.JLabel FullName;
     private javax.swing.JLabel LicenseNo;
     private javax.swing.JLabel Username;
+    private javax.swing.JLabel VehicleHired;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

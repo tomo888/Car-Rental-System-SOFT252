@@ -6,6 +6,7 @@
 package users;
 
 import java.io.Serializable;
+import products.Car;
 
 /**
  *
@@ -14,13 +15,13 @@ import java.io.Serializable;
 public class Customer extends GenericUser implements Serializable {
     private int licenseNumber;
     private String address;
-    private String carHired;
+    private String vehicleHired;
 
-    public Customer(String firstName, String surname, String loginName, char[] password, int licenseNumber, String address, String carHired) {
+    public Customer(String firstName, String surname, String loginName, char[] password, int licenseNumber, String address, String vehicleHired) {
         super (firstName, surname, loginName, password);
         this.licenseNumber = licenseNumber;
         this.address = address;
-        this.carHired = carHired;
+        this.vehicleHired = vehicleHired;
     }
     
     public int getLicenseNumber() {
@@ -39,12 +40,12 @@ public class Customer extends GenericUser implements Serializable {
         this.address = address;
     }
     
-    public String getCarHired () {
-        return carHired;
+    public String getVehicleHired () {
+        return vehicleHired;
     }
     
-    public void setCarHired () {
-        this.carHired = carHired;
+    public void setVehicleHired (String vehicleHired) {
+        this.vehicleHired = vehicleHired;
     }
 }
 

@@ -320,9 +320,7 @@ public class SignupPage extends javax.swing.JFrame {
         else if (PasswordCheck == true) {
             Customer c = new Customer(FirstNameInput.getText(), SurnameInput.getText(), UsernameInput.getText(), jPasswordField1.getPassword(), Integer.parseInt(LicenseNoInput.getText()), AddressInput.getText(), null);
             NotificationText.setText("You have successfully created an account!");
-            ArrayList<Customer> newCustomerList = UserManager.getInstance().getCustomerList();
-            newCustomerList.add(c);
-            UserManager.getInstance().setCustomerList(newCustomerList);
+            UserManager.getInstance().getCustomerList().add(c);
         }
         
     }//GEN-LAST:event_jButton1MouseClicked

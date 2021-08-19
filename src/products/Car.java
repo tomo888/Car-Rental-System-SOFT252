@@ -27,7 +27,7 @@ public class Car extends Vehicle {
         return make;
     }
     
-    public void setMake() {
+    public void setMake(String make) {
         this.make = make;
     }
     
@@ -35,7 +35,7 @@ public class Car extends Vehicle {
         return model;
     }
     
-    public void setModel() {
+    public void setModel(String model) {
         this.model = model;
     }
     
@@ -43,7 +43,7 @@ public class Car extends Vehicle {
         return regDetails;
     }
     
-    public void setRegDetails() {
+    public void setRegDetails(String regDetails) {
         this.regDetails = regDetails;
     }
     

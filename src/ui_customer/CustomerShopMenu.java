@@ -25,11 +25,6 @@ public class CustomerShopMenu extends javax.swing.JFrame {
      */
     public CustomerShopMenu() {
         initComponents();
-        ArrayList<Car> newCarList = VehicleManager.getInstance().getCarList();
-        Car test1 = new Car(true, 200, "10/10/10", null, "honda", "civic", "1029283");
-        Car test2 = new Car(true, 400, "20/12/11", null, "honda", "massau", "69696969");
-        newCarList.add(test1);
-        newCarList.add(test2);
         addRowToJTable();
         ListSelectionModel sModel = VehicleDisplay.getSelectionModel();
         sModel.addListSelectionListener(new ListSelectionListener() {
@@ -43,6 +38,9 @@ public class CustomerShopMenu extends javax.swing.JFrame {
         });
 
     }
+    
+    //have to call method below instead of invoking above as otherwise the this.dispose(); command cannot be found
+    //and used
     
     public void loadDetails() {
     CustomerVehicleDetails customerCD = new CustomerVehicleDetails();
@@ -83,10 +81,10 @@ public class CustomerShopMenu extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -187,11 +185,14 @@ public class CustomerShopMenu extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) VehicleDisplay.getModel();
         Object rowData[] = new Object[4];
         for (Car v : VehicleManager.getInstance().getCarList()) {
+            if (v.getIsAvailable() == true) {
             rowData[0] = v.getMake();
             rowData[1] = v.getModel();
             rowData[2] = v.getRegDetails();
             rowData[3] = "£" + Integer.toString(v.getPrice());
-            model.addRow(rowData);
+            model.addRow(rowData);            
+            }
+
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
