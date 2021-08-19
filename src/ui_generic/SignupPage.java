@@ -19,8 +19,6 @@ import java.util.logging.Logger;
  * @author User
  */
 public class SignupPage extends javax.swing.JFrame {
-    UserManager um = new UserManager();
-
     /**
      * Creates new form SignupPage
      */
@@ -233,14 +231,6 @@ public class SignupPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        String input1 = FirstNameInput.getText();
-        String input2 = SurnameInput.getText();
-        String input3 = AddressInput.getText();
-        String input4 = LicenseNoInput.getText();
-        String input5 = UsernameInput.getText();
-        char[] input6 = jPasswordField1.getPassword();
-        char[] input7 = jPasswordField2.getPassword();
-        
         boolean FirstNameCheck = false;
         boolean SurnameCheck = false;
         boolean AddressCheck = false;
@@ -248,7 +238,7 @@ public class SignupPage extends javax.swing.JFrame {
         boolean UsernameCheck = false;
         boolean PasswordCheck = false;
         
-        if(input1.equals("")) {
+        if(FirstNameInput.getText().equals("")) {
             FirstNameCheck = false;
             NotificationText.setText("Please input your first name.");
         }
@@ -257,7 +247,7 @@ public class SignupPage extends javax.swing.JFrame {
             FirstNameCheck = true;
         }
         
-        if (FirstNameCheck == true && input2.equals("")) {
+        if (FirstNameCheck == true && SurnameInput.getText().equals("")) {
             SurnameCheck = false;
             NotificationText.setText("Please input your surname.");
         }
@@ -266,7 +256,7 @@ public class SignupPage extends javax.swing.JFrame {
             SurnameCheck = true;
         }
         
-        if (SurnameCheck == true && input3.equals("")) {
+        if (SurnameCheck == true && AddressInput.getText().equals("")) {
             AddressCheck = false;
             NotificationText.setText("Please input your address.");
         }
@@ -275,7 +265,7 @@ public class SignupPage extends javax.swing.JFrame {
             AddressCheck = true;
         }
         
-        if (AddressCheck == true && input4.equals("")) {
+        if (AddressCheck == true && LicenseNoInput.getText().equals("")) {
             LicenseNoCheck = false;
             NotificationText.setText("Please input your license number.");
         }
@@ -284,12 +274,12 @@ public class SignupPage extends javax.swing.JFrame {
             LicenseNoCheck = true;
         }
         
-        if (LicenseNoCheck == true && input5.equals("")) {
+        if (LicenseNoCheck == true && UsernameInput.getText().equals("")) {
             UsernameCheck = false;
             NotificationText.setText("Please choose a username.");
         }
         
-        else if (LicenseNoCheck == true && input5.charAt(0) == '@') {
+        else if (LicenseNoCheck == true && UsernameInput.getText().charAt(0) == '@') {
             UsernameCheck = false;
             NotificationText.setText("Please do not use '@' as the first character of your username.");
         }
@@ -298,9 +288,11 @@ public class SignupPage extends javax.swing.JFrame {
             UsernameCheck = true;
         }
         
-        for(Customer u : um.getCustomerList()) {
+        //for loop cannot be placed in above conditional block, else checks do not complete
+        
+        for(Customer u : UserManager.getInstance().getCustomerList()) {
             
-            if(input5.equals(u.getLoginName()))
+            if(UsernameInput.getText().equals(u.getLoginName()))
             {
                 UsernameCheck = false;
                 NotificationText.setText("This username has already been taken.");
@@ -308,7 +300,7 @@ public class SignupPage extends javax.swing.JFrame {
             
         }
         
-        if (UsernameCheck == true && input6.length == 0) {
+        if (UsernameCheck == true && jPasswordField1.getPassword().length == 0) {
             PasswordCheck = false;
             NotificationText.setText("Please input a password.");
         }
@@ -317,22 +309,20 @@ public class SignupPage extends javax.swing.JFrame {
             PasswordCheck = true;
         }
         
-        if (PasswordCheck == true && input7.length == 0) {
+        if (PasswordCheck == true && jPasswordField2.getPassword().length == 0) {
             NotificationText.setText("Please type your chosen password in the 'Confirm Password' box.");
         }
         
-        else if (PasswordCheck == true && (!Arrays.equals(input6, input7))) {
+        else if (PasswordCheck == true && (!Arrays.equals(jPasswordField1.getPassword(), jPasswordField2.getPassword()))) {
             NotificationText.setText("Your passwords do not match.");
         }
         
         else if (PasswordCheck == true) {
             Customer c = new Customer(FirstNameInput.getText(), SurnameInput.getText(), UsernameInput.getText(), jPasswordField1.getPassword(), Integer.parseInt(LicenseNoInput.getText()), AddressInput.getText(), null);
             NotificationText.setText("You have successfully created an account!");
-            ArrayList<Customer> newCustomerList = um.getCustomerList();
+            ArrayList<Customer> newCustomerList = UserManager.getInstance().getCustomerList();
             newCustomerList.add(c);
-            um.setCustomerList(newCustomerList);
-            System.out.println(um.getCustomerList());   
-
+            UserManager.getInstance().setCustomerList(newCustomerList);
         }
         
     }//GEN-LAST:event_jButton1MouseClicked

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui_customer;
+package ui_admin;
 
+import ui_customer.*;
 import models.VehicleManager;
 import products.Car;
 
@@ -12,14 +13,14 @@ import products.Car;
  *
  * @author User
  */
-public class CustomerVehicleDetails extends javax.swing.JFrame {
+public class AdminVehicleDetails extends javax.swing.JFrame {
     Car carSelected = VehicleManager.getInstance().getCarList().get(CustomerShopMenu.rowSelected);
     public static int totalPrice;
 
     /**
      * Creates new form CustomerVehicleDetails
      */
-    public CustomerVehicleDetails() {
+    public AdminVehicleDetails() {
         initComponents();
         MakeText.setText("Make: " + carSelected.getMake());
         ModelText.setText("Model: " + carSelected.getModel());
@@ -246,20 +247,21 @@ public class CustomerVehicleDetails extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CustomerVehicleDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminVehicleDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CustomerVehicleDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminVehicleDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CustomerVehicleDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminVehicleDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CustomerVehicleDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminVehicleDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CustomerVehicleDetails().setVisible(true);
+                new AdminVehicleDetails().setVisible(true);
             }
         });
     }

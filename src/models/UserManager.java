@@ -21,16 +21,25 @@ import ui_generic.LoginPage;
  */
 public class UserManager implements Serializable {
     
-    private static ArrayList<Customer> customers = new ArrayList<Customer>(); 
+    private static UserManager um;
     
-    private static ArrayList<Admin> admins = new ArrayList<Admin>(); 
+    public static UserManager getInstance() {
+        if (um == null) {
+            um = new UserManager();
+        }
+        return um;
+    }
+    
+    private ArrayList<Customer> customers = new ArrayList<Customer>(); 
+    
+    private ArrayList<Admin> admins = new ArrayList<Admin>(); 
     
     public ArrayList<Customer> getCustomerList() {
         return customers;
     }
     
     public void setCustomerList(ArrayList<Customer> customers) {
-        UserManager.customers = customers;
+        this.customers = customers;
     }
     
     public ArrayList<Admin> getAdminList() {
@@ -38,15 +47,8 @@ public class UserManager implements Serializable {
     }
     
     public void setAdminList(ArrayList<Admin> admins) {
-        UserManager.admins = admins;
-    }
-    
-    private ArrayList<Customer> serializeCustomers = customers;
-    
-    
-    boolean done = false;
-        
-        
+        this.admins = admins;
+    }     
     
 }
 

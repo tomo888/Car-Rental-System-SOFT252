@@ -5,6 +5,8 @@
  */
 package products;
 
+import users.Customer;
+
 /**
  *
  * @author User
@@ -13,11 +15,13 @@ public class Vehicle {
     private boolean isAvailable;
     private int price;
     private String dateReturning;
+    private Customer customerUsing;
     
-    public Vehicle(boolean isAvailable, int price, String dateReturning) {
+    public Vehicle(boolean isAvailable, int price, String dateReturning, Customer customerUsing) {
         this.isAvailable = isAvailable;
         this.price = price;
         this.dateReturning = dateReturning;
+        this.customerUsing = customerUsing;
     }
     
     public boolean getIsAvailable() {
@@ -42,5 +46,13 @@ public class Vehicle {
     
     public void setDateReturning() {
         this.dateReturning = dateReturning;
+    }
+    
+    public Customer getCustomerUsing() {
+        return customerUsing;
+    }
+    
+    public void setCustomerUsing() {
+        this.customerUsing = customerUsing;
     }
 }

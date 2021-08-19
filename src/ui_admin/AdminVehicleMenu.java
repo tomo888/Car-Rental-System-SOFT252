@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui_customer;
+package ui_admin;
 
+import ui_customer.*;
 import java.util.ArrayList;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
@@ -17,13 +18,13 @@ import products.Car;
  *
  * @author User
  */
-public class CustomerShopMenu extends javax.swing.JFrame {
+public class AdminVehicleMenu extends javax.swing.JFrame {
     public static int rowSelected;
 
     /**
      * Creates new form CustomerShopMenu
      */
-    public CustomerShopMenu() {
+    public AdminVehicleMenu() {
         initComponents();
         ArrayList<Car> newCarList = VehicleManager.getInstance().getCarList();
         Car test1 = new Car(true, 200, "10/10/10", null, "honda", "civic", "1029283");
@@ -45,10 +46,10 @@ public class CustomerShopMenu extends javax.swing.JFrame {
     }
     
     public void loadDetails() {
-    CustomerVehicleDetails customerCD = new CustomerVehicleDetails();
-    customerCD.setVisible(true);
-    customerCD.pack();
-    customerCD.setLocationRelativeTo(null);   
+    AdminVehicleDetails adminVD = new AdminVehicleDetails();
+    adminVD.setVisible(true);
+    adminVD.pack();
+    adminVD.setLocationRelativeTo(null);   
     this.dispose();
     }
 
@@ -79,14 +80,14 @@ public class CustomerShopMenu extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Make", "Model", "Registration", "Price Per Day"
+                "Make", "Model", "Registration", "Price Per Day", "Available", "Date Returning"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -97,7 +98,6 @@ public class CustomerShopMenu extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        VehicleDisplay.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
         VehicleDisplay.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(VehicleDisplay);
         if (VehicleDisplay.getColumnModel().getColumnCount() > 0) {
@@ -105,6 +105,8 @@ public class CustomerShopMenu extends javax.swing.JFrame {
             VehicleDisplay.getColumnModel().getColumn(1).setResizable(false);
             VehicleDisplay.getColumnModel().getColumn(2).setResizable(false);
             VehicleDisplay.getColumnModel().getColumn(3).setResizable(false);
+            VehicleDisplay.getColumnModel().getColumn(4).setResizable(false);
+            VehicleDisplay.getColumnModel().getColumn(5).setResizable(false);
         }
 
         BackButton.setText("<- Back");
@@ -142,10 +144,10 @@ public class CustomerShopMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jScrollPane1MouseClicked
 
     private void BackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseClicked
-        CustomerMenu cMenu = new CustomerMenu();
-        cMenu.setVisible(true);
-        cMenu.pack();
-        cMenu.setLocationRelativeTo(null);
+        AdminMenu aMenu = new AdminMenu();
+        aMenu.setVisible(true);
+        aMenu.pack();
+        aMenu.setLocationRelativeTo(null);
         this.dispose();    }//GEN-LAST:event_BackButtonMouseClicked
 
     /**
@@ -165,32 +167,35 @@ public class CustomerShopMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CustomerShopMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminVehicleMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CustomerShopMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminVehicleMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CustomerShopMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminVehicleMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CustomerShopMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminVehicleMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CustomerShopMenu().setVisible(true);
+                new AdminVehicleMenu().setVisible(true);
             }
         });
     }
     
     public void addRowToJTable() {
         DefaultTableModel model = (DefaultTableModel) VehicleDisplay.getModel();
-        Object rowData[] = new Object[4];
+        Object rowData[] = new Object[6];
         for (Car v : VehicleManager.getInstance().getCarList()) {
             rowData[0] = v.getMake();
             rowData[1] = v.getModel();
             rowData[2] = v.getRegDetails();
             rowData[3] = "£" + Integer.toString(v.getPrice());
+            rowData[4] = v.getIsAvailable();
+            rowData[5] = v.getDateReturning();
             model.addRow(rowData);
         }
     }

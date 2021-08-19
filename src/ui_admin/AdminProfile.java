@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui_customer;
+package ui_admin;
 
 import ui_generic.LoginPage;
 
@@ -11,17 +11,15 @@ import ui_generic.LoginPage;
  *
  * @author User
  */
-public class CustomerProfile extends javax.swing.JFrame {
+public class AdminProfile extends javax.swing.JFrame {
 
     /**
      * Creates new form CustomerProfile
      */
-    public CustomerProfile() {
+    public AdminProfile() {
         initComponents();
-        Username.setText("Username: " + LoginPage.customerLoggedIn.getLoginName());
-        FullName.setText("Name: " + LoginPage.customerLoggedIn.getFirstName() + " " + LoginPage.customerLoggedIn.getSurname());
-        LicenseNo.setText("License number: " + LoginPage.customerLoggedIn.getLicenseNumber());
-        Address.setText("Address: " + LoginPage.customerLoggedIn.getAddress());
+        Username.setText("Username: " + LoginPage.adminLoggedIn.getLoginName());
+        FullName.setText("Name: " + LoginPage.adminLoggedIn.getFirstName() + " " + LoginPage.adminLoggedIn.getSurname());
     }
 
     /**
@@ -37,9 +35,6 @@ public class CustomerProfile extends javax.swing.JFrame {
         Username = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         FullName = new javax.swing.JLabel();
-        LicenseNo = new javax.swing.JLabel();
-        Address = new javax.swing.JLabel();
-        CarHired = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -57,15 +52,6 @@ public class CustomerProfile extends javax.swing.JFrame {
 
         FullName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         FullName.setText("Full name:");
-
-        LicenseNo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        LicenseNo.setText("License number:");
-
-        Address.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Address.setText("Address:");
-
-        CarHired.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        CarHired.setText("Car hired:");
 
         jButton1.setText("<- Back");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -101,10 +87,7 @@ public class CustomerProfile extends javax.swing.JFrame {
                                 .addGap(45, 45, 45)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(FullName)
-                                    .addComponent(Username)
-                                    .addComponent(LicenseNo)
-                                    .addComponent(Address)
-                                    .addComponent(CarHired))))
+                                    .addComponent(Username))))
                         .addGap(0, 80, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,17 +101,11 @@ public class CustomerProfile extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(64, 64, 64)
+                .addGap(77, 77, 77)
                 .addComponent(Username)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(FullName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(LicenseNo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Address)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(CarHired)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -144,18 +121,18 @@ public class CustomerProfile extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        CustomerMenu cMenu = new CustomerMenu();
-        cMenu.setVisible(true);
-        cMenu.pack();
-        cMenu.setLocationRelativeTo(null);
+        AdminMenu aMenu = new AdminMenu();
+        aMenu.setVisible(true);
+        aMenu.pack();
+        aMenu.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        CustomerEditProfile cEditProfile = new CustomerEditProfile();
-        cEditProfile.setVisible(true);
-        cEditProfile.pack();
-        cEditProfile.setLocationRelativeTo(null);
+        AdminEditProfile aEditProfile = new AdminEditProfile();
+        aEditProfile.setVisible(true);
+        aEditProfile.pack();
+        aEditProfile.setLocationRelativeTo(null);
         this.dispose();    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
@@ -175,29 +152,27 @@ public class CustomerProfile extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CustomerProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CustomerProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CustomerProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CustomerProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CustomerProfile().setVisible(true);
+                new AdminProfile().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Address;
-    private javax.swing.JLabel CarHired;
     private javax.swing.JLabel FullName;
-    private javax.swing.JLabel LicenseNo;
     private javax.swing.JLabel Username;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

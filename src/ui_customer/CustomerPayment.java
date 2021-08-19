@@ -61,6 +61,13 @@ public class CustomerPayment extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Card expiry date:");
 
+        jTextField4.setText("dd/mm/yy");
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+
         TotalPriceText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         TotalPriceText.setText("Amount to pay:");
 
@@ -155,6 +162,10 @@ public class CustomerPayment extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
     /**
      * @param args the command line arguments

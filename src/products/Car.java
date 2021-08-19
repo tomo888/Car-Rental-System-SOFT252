@@ -5,6 +5,8 @@
  */
 package products;
 
+import users.Customer;
+
 /**
  *
  * @author User
@@ -14,8 +16,8 @@ public class Car extends Vehicle {
     private String model;
     private String regDetails;
     
-    public Car (boolean isAvailable, int price, String dateReturning, String make, String model, String regDetails) {
-        super(isAvailable, price, dateReturning);
+    public Car (boolean isAvailable, int price, String dateReturning, Customer customerUsing, String make, String model, String regDetails) {
+        super(isAvailable, price, dateReturning, customerUsing);
         this.make = make;
         this.model = model;
         this.regDetails = regDetails;

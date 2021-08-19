@@ -14,6 +14,16 @@ import java.util.*;
  */
 public class VehicleManager implements Serializable {
     
+    private static VehicleManager vm;
+    
+    public static VehicleManager getInstance() {
+        if (vm == null) {
+            vm = new VehicleManager();
+        }
+        return vm;
+    }
+    
+    
     private static ArrayList<Car> cars = new ArrayList<Car>(); 
     
     public ArrayList<Car> getCarList() {
